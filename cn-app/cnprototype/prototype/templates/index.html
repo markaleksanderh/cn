@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+<h2>Job list</h2>
+<p><strong>Total:</strong> {{num_jobs}}</p>
+<h3>Jobs</h3>
+{% for j in job_list%}
+<div class="row">
+  <div class="col">
+    <h5><strong>{{j.name}},</strong> {{j.company}}</h5>
+    <p>Description</p>
+    <p>{{j.added}}</p>
+    <p>{{j.region}}</p>
+  </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}
