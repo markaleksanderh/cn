@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.index, name='index'),
 ]
 
+# login at http://localhost:8000/prototype/accounts/login/
+
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
