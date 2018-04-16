@@ -1,5 +1,8 @@
 from django.db import models
 
+from django.forms import ModelForm
+
+
 # Create your models here.
 
 """
@@ -31,3 +34,9 @@ class Region(models.Model):
     name = models.CharField(max_length=100, help_text="Enter region")
     def __str__(self):
         return self.name
+
+
+class JobForm(ModelForm):
+    class Meta:
+        model = Job
+        fields = ['name', 'region']
