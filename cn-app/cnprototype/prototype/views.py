@@ -22,3 +22,6 @@ class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
+
+class AddJob(generic.CreateView):
+    template_name = 'add_job.html'

@@ -8,19 +8,17 @@
 
 </head>
 <body>
+  {% include "header.html" %}
   <div class="container">
     <div class="row">
       <div class="col">
-        {% include "header.html" %}
+
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        {% if user.is_authenticated %}
-        <h5><strong>Hello,</strong> {{user.first_name}} {{user.second_name}}</h5>
-        <a class="btn btn-primary btn-sm" href="{% url 'logout' %}" role="button">Logout</a>
-        {% endif %}
+      <div class="col-3">
+        <h5>Filter list</h5>
       </div>
       <div class="col-8">
         {% block content %}
