@@ -20,13 +20,12 @@ LIST MODELS
 class CustomUser(AbstractUser):
     # First/last name is not a global-friendly pattern
     name = models.CharField(blank=True, max_length=255)
-
+    first_name = models.CharField(max_length=100, blank=True)
+    second_name = models.CharField(max_length=100, blank=True)
+    company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     def __str__(self):
-        return self.email
+        return self.first_name
 
-
-#
-#
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
@@ -45,7 +44,6 @@ class Region(models.Model):
     name = models.CharField(max_length=100, help_text="Enter region")
     def __str__(self):
         return self.name
-
 
 class JobForm(ModelForm):
     class Meta:

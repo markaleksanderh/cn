@@ -1,20 +1,19 @@
-{% extends "base_generic.html" %}
-
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>Job list</h2>
-<p><strong>Total:</strong> {{num_jobs}}</p>
-<h3>Jobs</h3>
-{% for j in job_list%}
-<div class="row">
-  <div class="col">
-    <h5><strong>{{j.name}},</strong> {{j.company}}</h5>
-    <p>Description</p>
-    <p>{{j.added}}</p>
-    <p>{{j.region}}</p>
+
+  {% if user.is_authenticated %}
+  <h1>List</h1>
+  {% else %}
+  <div class="jumbotron">
+    <h1 class="display-4">Test App</h1>
+    <p class="lead">{% lorem 10 w random %}</p>
+    <hr class="my-4">
+    <p>{% lorem 18 w random %}</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign-up</a>
+    </p>
   </div>
-</div>
-
-
-{% endfor %}
+  {% endif %}
 {% endblock %}

@@ -11,30 +11,20 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        {% block header %}
-        {% endblock %}
+        {% include "header.html" %}
       </div>
     </div>
+
     <div class="row">
-      <div class="col-3">
-        <h4>Sidebar menu</h4>
+      <div class="col-2">
         {% if user.is_authenticated %}
-        <p>Hi, {{user.username}}</p>
-        {% else %}
-        <p>You are not logged in.</p>
-        <a>Login</a>
+        <h5><strong>Hello,</strong> {{user.first_name}} {{user.second_name}}</h5>
+        <a class="btn btn-primary btn-sm" href="{% url 'logout' %}" role="button">Logout</a>
         {% endif %}
-        <ul>
-          <li>Home</li>
-          <li>Search jobs</li>
-          <li>Add job</li>
-          <li>My saved jobs</li>
-          <li>My profile</li>
-        </ul>
       </div>
-      <div class="col-5">
+      <div class="col-8">
         {% block content %}
-        {% endblock %}
+        {% endblock content %}
       </div>
     </div>
   </div>
