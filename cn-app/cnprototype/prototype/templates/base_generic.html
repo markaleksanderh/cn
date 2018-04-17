@@ -12,13 +12,18 @@
     <div class="row">
       <div class="col">
         {% block header %}
-        <p>Header block</p>
         {% endblock %}
       </div>
     </div>
     <div class="row">
       <div class="col-3">
         <h4>Sidebar menu</h4>
+        {% if user.is_authenticated %}
+        <p>Hi, {{user.username}}</p>
+        {% else %}
+        <p>You are not logged in.</p>
+        <a>Login</a>
+        {% endif %}
         <ul>
           <li>Home</li>
           <li>Search jobs</li>

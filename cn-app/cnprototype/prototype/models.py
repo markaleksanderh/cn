@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from django.forms import ModelForm
@@ -16,6 +17,16 @@ LIST MODELS
 -- Job type
 """
 
+class CustomUser(AbstractUser):
+    # First/last name is not a global-friendly pattern
+    name = models.CharField(blank=True, max_length=255)
+
+    def __str__(self):
+        return self.email
+
+
+#
+#
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
