@@ -13,7 +13,7 @@
 
 
 # users/views.py
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Job
 
@@ -29,12 +29,13 @@ class SignUp(generic.CreateView):
 
 class AddJob(generic.CreateView):
     form_class = AddJobForm
-    template_name = "add_job.html"
+    success_url = reverse_lazy('index')
+    template_name = 'add_job.html'
 
 class ViewJobs(generic.ListView):
     model = Job
     context_object_name = 'job_list'
     queryset = Job.objects.all()
-    template_name = "view_jobs.html"
+    template_name = 'view_jobs.html'
     # def get(self, request):
     #     return HttpResponse('View jobs')
