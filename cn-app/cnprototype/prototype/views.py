@@ -20,13 +20,15 @@ from .models import Job
 from django.http import HttpResponse
 
 from .forms import CustomUserCreationForm
+from .forms import AddJobForm
 
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-class AddJob(generic.TemplateView):
+class AddJob(generic.CreateView):
+    form_class = AddJobForm
     template_name = "add_job.html"
 
 class ViewJobs(generic.ListView):

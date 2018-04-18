@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-  {% if user.is_authenticated %}
-  <h1>Index</h1>
-  {% else %}
-  <div class="jumbotron">
-    <h1 class="display-4">Test App</h1>
-    <p class="lead">{% lorem 10 w random %}</p>
-    <hr class="my-4">
-    <p>{% lorem 18 w random %}</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
-      <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign-up</a>
-    </p>
+<div class="row">
+  <div class="col">
+    {% if user.is_authenticated %}
+    <h1>Index</h1>
+    <h5><strong>Hello,</strong> {{user.first_name}}.</h5>
+    {% else %}
+    <div class="jumbotron">
+      <h1 class="display-4">Test App</h1>
+      <p class="lead">{% lorem 10 w random %}</p>
+      <hr class="my-4">
+      <p>{% lorem 18 w random %}</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign-up</a>
+      </p>
+    </div>
   </div>
+</div>
   {% endif %}
 {% endblock %}

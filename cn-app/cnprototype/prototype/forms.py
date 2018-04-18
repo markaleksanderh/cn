@@ -13,7 +13,7 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = UserChangeForm.Meta.fields
 
-class AddJobForm(forms.Form):
+class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
         # fields = '__all__'
