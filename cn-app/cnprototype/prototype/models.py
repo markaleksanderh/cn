@@ -11,7 +11,6 @@ LIST MODELS
 -- Job
 -- Company
 
-
 ???
 -- Region
 -- Job type
@@ -28,6 +27,8 @@ class CustomUser(AbstractUser):
 
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
+    description = models.CharField(max_length=1000, help_text="Enter job description", null=True, blank=True)
+    value = models.IntegerField(null=True, blank=True, help_text="Enter job value")
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     added = models.DateField(null=True, blank=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
