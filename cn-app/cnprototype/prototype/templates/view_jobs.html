@@ -14,22 +14,23 @@
   <div class="col-9">
     <h3>Return jobs</h3>
     {% if job_list %}
-    <p>Number of jobs: {{job_list|length}}</p>
-    {% for j in job_list %}
-    <div class="card">
-      <div class="card-header">
-      {{j.name}}
+      <p>Number of jobs: {{job_list|length}}</p>
+      {% for j in job_list %}
+      <div class="card">
+        <div class="card-header">
+        {{j.added_by}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{j.name}}</h5>
+          <p class="card-text">{{j.description}}.</p>
+          <p class="card-text">{{j.value}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <strong>Added:</strong> {{j.added}}
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{j.value}}</h5>
-        <p class="card-text">{{j.description}}.</p>
-      </div>
-    </div>
-    </br>
-
-
-
-    {% endfor %}
+      </br>
+      {% endfor %}
 
     {% else %}
     <p>No jobs found.</p>
