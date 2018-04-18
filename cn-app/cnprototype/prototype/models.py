@@ -1,11 +1,12 @@
 from django.contrib.auth.models import AbstractUser
-from django.db import models
 from django.conf import settings
+from django.db import models
+
 
 from django.forms import ModelForm
 
 class CustomUser(AbstractUser):
-    name = models.CharField(blank=True, max_length=255)
+    name = models.CharField(blank=True, max_length=255, unique=True)
     first_name = models.CharField(max_length=100, blank=True)
     second_name = models.CharField(max_length=100, blank=True)
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
