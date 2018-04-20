@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     second_name = models.CharField(max_length=100, blank=True)
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     def __str__(self):
-        return self.first_name
+        return self.id
 
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
@@ -20,9 +20,9 @@ class Job(models.Model):
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
-    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='id', null=True)
+    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username', null=True)
     def __str__(self):
-        return self.name
+        return self.added_by
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")
