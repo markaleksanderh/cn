@@ -6,12 +6,12 @@ from django.db import models
 from django.forms import ModelForm
 
 class CustomUser(AbstractUser):
-    name = models.CharField(blank=True, max_length=255, unique=True)
+    name = models.CharField(blank=True, max_length=255)
     first_name = models.CharField(max_length=100, blank=True)
     second_name = models.CharField(max_length=100, blank=True)
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     def __str__(self):
-        return self.id
+        return self.username
 
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
@@ -20,9 +20,9 @@ class Job(models.Model):
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
-    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='username', null=True)
+    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='id')
     def __str__(self):
-        return self.added_by
+        return self.name
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")

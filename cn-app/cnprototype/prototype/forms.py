@@ -6,7 +6,7 @@ from .models import Job
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('first_name', 'second_name', 'username', 'email')
+        fields = ('username', 'email')
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
@@ -18,3 +18,5 @@ class AddJobForm(forms.ModelForm):
         model = Job
         # fields = '__all__'
         fields = ['name', 'description']
+        # def get_queryset(self):
+        #     return CustomUser.objects.filter(user=self.request.user)

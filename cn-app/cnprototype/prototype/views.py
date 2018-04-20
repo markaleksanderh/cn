@@ -17,7 +17,7 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Job
 
-from django.http import HttpResponse
+# from django.http import HttpResponse
 
 from .forms import CustomUserCreationForm
 from .forms import AddJobForm
@@ -31,6 +31,8 @@ class AddJob(generic.CreateView):
     form_class = AddJobForm
     success_url = reverse_lazy('view_jobs')
     template_name = 'add_job.html'
+    # def get_queryset(self):
+    #     return CustomUser.objects.filter(user=self.request.user)
 
 class ViewJobs(generic.ListView):
     model = Job
