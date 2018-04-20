@@ -27,10 +27,14 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
+
 class AddJob(generic.CreateView):
     form_class = AddJobForm
     success_url = reverse_lazy('view_jobs')
     template_name = 'add_job.html'
+    def form_valid(self, form):
+        form.instance.added_by = self.request.user
+        return super(AddJob, self).form_valid(form)
     # def get_queryset(self):
     #     return CustomUser.objects.filter(user=self.request.user)
 
@@ -39,6 +43,7 @@ class ViewJobs(generic.ListView):
     context_object_name = 'job_list'
     queryset = Job.objects.all()
     template_name = 'view_jobs.html'
+    pagine_by = 2
     # def get(self, request):
     #     return HttpResponse('View jobs')
 

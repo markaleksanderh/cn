@@ -6,7 +6,7 @@ from .models import Job
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'first_name', 'second_name')
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:

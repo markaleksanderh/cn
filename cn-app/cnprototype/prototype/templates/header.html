@@ -13,13 +13,14 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'index' %}">Home</a>
       </li>
+      {% if user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'view_jobs' %}">View jobs</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'add_job' %}">Add job</a>
       </li>
-      {% if user.is_authenticated %}
+
       <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
@@ -28,7 +29,7 @@
         <a class="nav-link" href="{% url 'login' %}">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'signup' %}">Register</a>
+        <a class="nav-link" href="{% url 'signup' %}">Sign-up</a>
       </li>
       {% endif %}
     </ul>

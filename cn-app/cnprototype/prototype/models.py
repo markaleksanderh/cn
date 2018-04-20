@@ -5,6 +5,7 @@ from django.db import models
 
 from django.forms import ModelForm
 
+
 class CustomUser(AbstractUser):
     name = models.CharField(blank=True, max_length=255)
     first_name = models.CharField(max_length=100, blank=True)
@@ -20,7 +21,10 @@ class Job(models.Model):
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
-    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='id')
+    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    # def save(self, *args, **kwargs):
+    #     if self.added_by is None:
+    #         self.added_by = CustomUser.objects.get(username)
     def __str__(self):
         return self.name
 

@@ -18,13 +18,15 @@
       {% for j in job_list %}
       <div class="card">
         <div class="card-header">
-        {{j.added_by}}
+        <strong>Owner: </strong>{{j.added_by}}
 
         </div>
         <div class="card-body">
           <h5 class="card-title">{{j.name}}</h5>
           <p class="card-text">{{j.description}}.</p>
-          <p class="card-text">{{j.value}}</p>
+          <p class="card-text"><strong>Value: </strong>{{j.value}}</p>
+          <p class="card-text"><strong>Job id: </strong> {{j.id}}</p>
+          {{j.username}}
         </div>
         <div class="card-footer text-muted">
           <strong>Added:</strong> {{j.added}}
