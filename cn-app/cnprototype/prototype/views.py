@@ -39,3 +39,9 @@ class ViewJobs(generic.ListView):
     template_name = 'view_jobs.html'
     # def get(self, request):
     #     return HttpResponse('View jobs')
+
+class Dashboard(generic.TemplateView):
+    template_name = "index.html"
+    context_object_name = 'user_profile'
+    def get_queryset(self):
+        return CustomUser.objects.filter(user=self.request.user)
