@@ -20,7 +20,7 @@ class Job(models.Model):
     company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True)
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
-    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, to_field='id', null=True)
     def __str__(self):
         return self.name
 

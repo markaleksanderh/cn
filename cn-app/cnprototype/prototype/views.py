@@ -29,7 +29,7 @@ class SignUp(generic.CreateView):
 
 class AddJob(generic.CreateView):
     form_class = AddJobForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('view_jobs')
     template_name = 'add_job.html'
 
 class ViewJobs(generic.ListView):
