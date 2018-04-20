@@ -16,7 +16,4 @@ class CustomUserChangeForm(UserChangeForm):
 class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
-        # fields = '__all__'
-        fields = ['name', 'description']
-        # def get_queryset(self):
-        #     return CustomUser.objects.filter(user=self.request.user)
+        fields = ['name', 'description', 'value', 'region']

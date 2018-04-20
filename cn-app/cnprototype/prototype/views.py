@@ -39,11 +39,12 @@ class AddJob(generic.CreateView):
     #     return CustomUser.objects.filter(user=self.request.user)
 
 class ViewJobs(generic.ListView):
+    current_user = str(lambda self: self.request.user)
     model = Job
     context_object_name = 'job_list'
     queryset = Job.objects.all()
     template_name = 'view_jobs.html'
-    pagine_by = 2
+    paginate_by = 2
     # def get(self, request):
     #     return HttpResponse('View jobs')
 

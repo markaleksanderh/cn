@@ -22,9 +22,6 @@ class Job(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    # def save(self, *args, **kwargs):
-    #     if self.added_by is None:
-    #         self.added_by = CustomUser.objects.get(username)
     def __str__(self):
         return self.name
 
