@@ -1,0 +1,25 @@
+/** fonts
+Abel, 400
+Ubuntu, 300, 300i, 400, 400i, 500, 500i, 700, 700i
+**/
+
+@import url('https://fonts.googleapis.com/css?family=Abel|Ubuntu:300,300i,400,400i,500,500i,700,700i');
+
+body {
+  background-color: #ECEFF1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Abel';
+}
+
+p, ul, li {
+  font-family: 'Ubuntu';
+}
+
+.header-shadow {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.25);
+  -moz-box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.25);
+  box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.25);
+}

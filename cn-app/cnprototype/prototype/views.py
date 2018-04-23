@@ -44,7 +44,7 @@ class ViewJobs(generic.ListView):
     context_object_name = 'job_list'
     queryset = Job.objects.order_by('-added')
     template_name = 'view_jobs.html'
-    paginate_by = 2
+    paginate_by = 5
     # def get(self, request):
     #     return HttpResponse('View jobs')
 
