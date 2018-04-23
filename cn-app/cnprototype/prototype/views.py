@@ -54,9 +54,10 @@ class Dashboard(generic.TemplateView):
     def get_queryset(self):
         return CustomUser.objects.filter(user=self.request.user)
 
-class JobDetail(generic.TemplateView):
+class JobDetail(generic.DetailView):
+    model = Job
     template_name = 'job_detail.html'
-    context_object_name = 'job_detail'
+    # context_object_name = 'job_detail'
     # queryset = Job.objects.get(pk=id)
     # queryset = Job.objects.all()
 
