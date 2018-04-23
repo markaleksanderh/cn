@@ -25,9 +25,9 @@ class Job(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        # # return reverse('job_detail', args=[str(self.id)])
+        return reverse('job_detail', args=[str(self.id)])
         # return 'job_detail/{}/'.format(self.id)
-        return reverse('job_detail', kwargs={'id': self.id})
+        # return reverse('job_detail', kwargs={'id': self.id})
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")

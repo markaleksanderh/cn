@@ -58,6 +58,7 @@ class JobDetail(generic.TemplateView):
     template_name = 'job_detail.html'
     context_object_name = 'job_detail'
     # queryset = Job.objects.get(pk=id)
+    # queryset = Job.objects.all()
 
 
 

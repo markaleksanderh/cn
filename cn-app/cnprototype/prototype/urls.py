@@ -22,6 +22,5 @@ urlpatterns = [
     path('add_job/', views.AddJob.as_view(), name='add_job'),
     path('view_jobs/', views.ViewJobs.as_view(), name='view_jobs'),
     path('dashboard/', views.Dashboard.as_view(), name='dashboard'),
-    path('job/<int:id>', views.JobDetail.as_view(), name='job_detail')
-
+    path('job/<int:pk>', views.JobDetail.as_view(), name='job_detail')
 ]
