@@ -42,7 +42,7 @@ class ViewJobs(generic.ListView):
     current_user = str(lambda self: self.request.user)
     model = Job
     context_object_name = 'job_list'
-    queryset = Job.objects.all()
+    queryset = Job.objects.order_by('-added')
     template_name = 'view_jobs.html'
     paginate_by = 2
     # def get(self, request):
