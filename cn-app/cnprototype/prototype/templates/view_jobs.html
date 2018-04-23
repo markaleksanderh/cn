@@ -22,7 +22,7 @@
 
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{j.name}}</h5>
+          <h5 class="card-title"><a href="{{j.get_absolute_url}}">{{j.name}}</a></h5>
           <p class="card-text">{{j.description}}.</p>
           <p class="card-text"><strong>Value: </strong>{{j.value}}</p>
           <p class="card-text"><strong>Job id: </strong> {{j.id}}</p>

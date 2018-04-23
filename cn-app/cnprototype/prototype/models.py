@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.db import models
-
+from django.urls import reverse
 
 from django.forms import ModelForm
 
@@ -24,6 +24,10 @@ class Job(models.Model):
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        # # return reverse('job_detail', args=[str(self.id)])
+        # return 'job_detail/{}/'.format(self.id)
+        return reverse('job_detail', kwargs={'id': self.id})
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")
