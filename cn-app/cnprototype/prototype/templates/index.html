@@ -9,19 +9,45 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-3">
-    <h5>My profile</h5>
-    <p><strong>First name: </strong>{{user.first_name}}</p>
-    <p><strong>Second name: </strong>{{user.second_name}}</p>
-    <p><strong>Company: </strong>{{user.company}}</p>
-    <p><strong>User ID: </strong>{{user.id}}</p>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          <strong>Name: </strong>{{user.first_name}} {{user.last_name}</p>
+        </div>
+        <p class="card-text"><strong>Company: </strong>{{user.company}}</p>
+        <p class="card-text"><strong>User ID: </strong>{{user.id}}</p>
+      </div>
+    </div>
   </div>
-  <div class="col-3">
-    <h5>My submitted jobs</h5>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        My added jobs
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
   </div>
-  <div class="col-3">
-    <h5>My saved jobs</h5>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        My saved jobs
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
 
