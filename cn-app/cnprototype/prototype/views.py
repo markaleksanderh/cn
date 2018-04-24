@@ -40,54 +40,12 @@ class AddJob(generic.CreateView):
     #     return CustomUser.objects.filter(user=self.request.user)
 
 class ViewJobs(generic.ListView):
-    # current_user = lambda self: CustomUser.objects.filter(user=self.request.user.id)
-    # model = Job
-    # context_object_name = 'job_list'
     template_name = 'view_jobs.html'
-    # queryset = Job.objects.order_by('-added')
-    # queryset = Job.objects.order_by('-added').exclude(added_by__exact=6)
-    # def get(self, request):
-    #     user = self.request.user.id
-    #     job_list = Job.objects.filter(added_by__exact=n_user)
-    #     return HttpResponse(job_list)
-    # queryset = queryset.exclude(added_by__exact=6)
-
-    # paginate_by = 5
-    #
-
-
-    # n_user = lambda self : self.request.user.id
-    # queryset = Job.objects.filter(added_by__exact=n_user)
-    # template_name = 'view_jobs.html'
-
-
-
     def get(self, request, *args, **kwargs):
         user = self.request.user.id
         job_list = Job.objects.exclude(added_by__exact=user)
-        # return HttpResponse(job_list)
         return render(request, self.template_name, {'job_list': job_list})
 
-
-
-
-
-    # def get_queryset(self, request):
-    #     user = self.request.user.id
-    #     job_list = Job.objects.filter(added_by__exact=user)
-    #     return job_list
-
-    # def get_queryset(self, request):
-    #     user = self.request.user.id
-    #     job_list = Job.objects.exclude(added_by__exact=user)
-    #     return job_list
-
-    # def get_queryset(self):
-    #     current_user = CustomUser.objects.filter(user=self.request.user)
-    #     job_list = Job.objects.all()
-    #     return job_list
-    # def get_queryset(self):
-    #     return CustomUser.objects.filter(user=self.request.user)
 
 class Dashboard(generic.TemplateView):
     template_name = 'index.html'
@@ -97,10 +55,7 @@ class Dashboard(generic.TemplateView):
 
 class JobDetail(generic.DetailView):
     model = Job
-    # template_name = 'job_detail.html'
-    # context_object_name = 'job_detail'
-    # queryset = Job.objects.get(pk=id)
-    # queryset = Job.objects.all()
+
 
 
 
