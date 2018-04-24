@@ -9,30 +9,33 @@
 </div>
 <div class="row">
   <div class="col-3">
-    <h4>Filter contracts</h4>
+    <h4>Filter</h4>
   </div>
   <div class="col-9">
+
     <h3>Contract list</h3>
     {% if job_list %}
       <p>Number of jobs: {{job_list|length}}</p>
       {% for j in job_list %}
-      <div class="card">
-        <div class="card-header">
-        <strong>Owner: </strong>{{j.added_by}}
 
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><a href="{{j.get_absolute_url}}">{{j.name}}</a></h5>
-          <p class="card-text">{{j.description}}.</p>
-          <p class="card-text"><strong>Value: </strong>{{j.value}}</p>
-          <p class="card-text"><strong>Job id: </strong> {{j.id}}</p>
-          {{j.username}}
-        </div>
-        <div class="card-footer text-muted">
-          <strong>Added:</strong> {{j.added}}
-        </div>
-      </div>
-      </br>
+          <div class="card">
+            <div class="card-header">
+              <strong>Posted by: </strong>{{j.added_by}}
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{{j.name}}</h4>
+              <p class="card-text">{{j.description}}</p>
+              <p class="card-text"><strong>Region: </strong>{{j.region}}</p>
+              <p class="card-text"><strong>Value: </strong>{{j.value}}</p>
+              <a href="{{j.get_absolute_url}}" class="btn btn-primary">View job</a>
+              <a href="#" class="btn btn-light">Save</a>
+
+            </div>
+            <div class="card-footer text-muted">
+              <strong>Added:</strong> {{j.added}}
+            </div>
+          </div>
+          </br>
       {% endfor %}
 
     {% else %}

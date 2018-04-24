@@ -39,10 +39,10 @@ class AddJob(generic.CreateView):
     #     return CustomUser.objects.filter(user=self.request.user)
 
 class ViewJobs(generic.ListView):
-    current_user = str(lambda self: self.request.user)
+    current_user = lambda self: CustomUser.objects.filter(user=self.request.user.id)
     model = Job
     context_object_name = 'job_list'
-    queryset = Job.objects.order_by('-added')
+    queryset = Job.objects.order_by('-added').exclude(added_by__exact=current_user)
     template_name = 'view_jobs.html'
     paginate_by = 5
     # def get(self, request):
@@ -56,7 +56,7 @@ class Dashboard(generic.TemplateView):
 
 class JobDetail(generic.DetailView):
     model = Job
-    template_name = 'job_detail.html'
+    # template_name = 'job_detail.html'
     # context_object_name = 'job_detail'
     # queryset = Job.objects.get(pk=id)
     # queryset = Job.objects.all()
