@@ -25,13 +25,21 @@
   <div class="col-4">
     <div class="card">
       <div class="card-header">
-        My added jobs
+        My added jobs ({{job_list|length}})
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
+      {% if job_list %}
+        <ul class="list-group list-group-flush">
+          {% for j in job_list %}
+            <li class="list-group-item"><a href="{{ j.get_absolute_url }}">{{j.name}}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="card-body">
+          <div class="card-title">
+            No jobs added yet.
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 

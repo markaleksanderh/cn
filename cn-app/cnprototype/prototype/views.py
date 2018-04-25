@@ -23,6 +23,10 @@ from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 from .forms import AddJobForm
 
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
@@ -41,20 +45,27 @@ class AddJob(generic.CreateView):
 
 class ViewJobs(generic.ListView):
     template_name = 'view_jobs.html'
+    # login_url = 'login'
+    # redirect_field_name = 'redirect_to'
+    # permission_denied_message = 'You must be logged-in to view this content'
+
     def get(self, request, *args, **kwargs):
         user = self.request.user.id
         job_list = Job.objects.exclude(added_by__exact=user)
         return render(request, self.template_name, {'job_list': job_list})
 
 
-class Dashboard(generic.TemplateView):
+class Dashboard(generic.DetailView):
     template_name = 'index.html'
-    context_object_name = 'user_profile'
-    def get_queryset(self):
-        return CustomUser.objects.filter(user=self.request.user)
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        job_list = Job.objects.filter(added_by__exact=user.id)
+        return render(request, self.template_name, {'job_list': job_list}, {'user': user})
+
 
 class JobDetail(generic.DetailView):
     model = Job
+    template_name = 'job_detail.html'
 
 
 

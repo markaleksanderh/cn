@@ -24,6 +24,7 @@ class Job(models.Model):
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.name
+
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])
         # return 'job_detail/{}/'.format(self.id)
