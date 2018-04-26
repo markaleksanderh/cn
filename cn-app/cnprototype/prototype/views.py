@@ -66,6 +66,10 @@ class Dashboard(generic.DetailView):
 class JobDetail(generic.DetailView):
     model = Job
     template_name = 'job_detail.html'
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        job = Job.objects.get(pk=self.kwargs.get('pk'))
+        return render(request, self.template_name, {'job': job}, {'user': user})
 
 
 
