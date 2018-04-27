@@ -35,7 +35,8 @@ with open('urls.txt', 'r') as infile:
 	first = infile.readline()
 	# print(first.strip())
 	# print('https://www.gov.uk/government/publications/mhclg-workforce-management-information-march-2018')
-	csv_req = requests.get(infile.readline().strip()).content
-	csv_req = BeautifulSoup(csv_req, 'html.parser')
-	# # Find all span tags where class is 'download'
-	print('{}{}'.format(base_url,''.join([a.find('a').get('href') for a in csv_req.findAll('span', {'class':'download'})])))
+	for url in infile:
+		csv_req = requests.get(infile.readline().strip()).content
+		csv_req = BeautifulSoup(csv_req, 'html.parser')
+		# # Find all span tags where class is 'download'
+		print('{}{}'.format(base_url,''.join([a.find('a').get('href') for a in csv_req.findAll('span', {'class':'download'})])))
