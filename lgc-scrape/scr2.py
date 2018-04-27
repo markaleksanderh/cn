@@ -31,8 +31,11 @@ with open('urls.txt', 'wt') as outfile:
 # 	print('{}{}'.format(base_url, next_page_urls))
 """
 
-# print('{}{}'.format(base_url, next_page_urls[0]))
-
-# Test with first link
-# csv_req = requests.get('{}{}'.format(base_url, next_page_urls[0])).content
-# print(csv_req)
+# Open list of URLs and request each using for loop
+with open('urls.txt', 'r') as infile:
+	first = infile.readline()
+	print(first)
+	csv_req = requests.get(infile.readline()).content
+	csv_req = BeautifulSoup(csv_req, 'html.parser')
+	# Find all span tags where class is 'download'
+	print(csv_req.findAll('span', {'class':'download'}))
