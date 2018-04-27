@@ -17,9 +17,15 @@ h3_soup = gov_soup.findAll('h3', {'class': 'gem-c-document-list__item-title'})
 
 # Now loop through array of h3 elements
 for a in h3_soup:
-	print(a.find('a'))
-
+	next_page_urls.append(a.find('a').get('href'))
 
 # href attribute of anchor tags is relative so to get the scraper to work,
 # be sure to provide the rest of the url
-base_url = ''
+base_url = 'https://www.gov.uk/'
+
+
+# for url in next_page_urls:
+# 	print('{}{}'.format(base_url, next_page_urls))
+
+
+print('{}{}'.format(base_url, next_page_urls[0]))
