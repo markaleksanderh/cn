@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+"""
 # Request content of following URL as string
 gov_req = requests.get('https://www.gov.uk/government/collections/workforce-management').content
 
@@ -29,13 +30,13 @@ with open('urls.txt', 'wt') as outfile:
 
 # for url in next_page_urls:
 # 	print('{}{}'.format(base_url, next_page_urls))
+"""
 
-
-# Open list of URLs and request each using for loop
-# with open('urls.txt', 'r') as infile:
-# 	first = infile.readline()
-# 	print(first)
-# 	csv_req = requests.get(infile.readline()).content
-# 	csv_req = BeautifulSoup(csv_req, 'html.parser')
-# 	# Find all span tags where class is 'download'
-# 	print(csv_req.findAll('div', {'class':'attachment-details'}))
+Open list of URLs and request each using for loop
+with open('urls.txt', 'r') as infile:
+	first = infile.readline()
+	print(first)
+	csv_req = requests.get(infile.readline()).content
+	csv_req = BeautifulSoup(csv_req, 'html.parser')
+	# Find all span tags where class is 'download'
+	print(csv_req.findAll('div', {'class':'attachment-details'}))
