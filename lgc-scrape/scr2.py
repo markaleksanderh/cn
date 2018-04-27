@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-"""
+
 # Request content of following URL as string
 gov_req = requests.get('https://www.gov.uk/government/collections/workforce-management').content
 
@@ -18,7 +18,7 @@ h3_soup = gov_soup.findAll('h3', {'class': 'gem-c-document-list__item-title'})
 
 # href attribute of anchor tags is relative so to get the scraper to work,
 # be sure to provide the rest of the url
-base_url = 'https://www.gov.uk/'
+base_url = 'https://www.gov.uk'
 
 
 
@@ -29,13 +29,13 @@ with open('urls.txt', 'wt') as outfile:
 
 # for url in next_page_urls:
 # 	print('{}{}'.format(base_url, next_page_urls))
-"""
+
 
 # Open list of URLs and request each using for loop
-with open('urls.txt', 'r') as infile:
-	first = infile.readline()
-	print(first)
-	csv_req = requests.get(infile.readline()).content
-	csv_req = BeautifulSoup(csv_req, 'html.parser')
-	# Find all span tags where class is 'download'
-	print(csv_req.findAll('span', {'class':'download'}))
+# with open('urls.txt', 'r') as infile:
+# 	first = infile.readline()
+# 	print(first)
+# 	csv_req = requests.get(infile.readline()).content
+# 	csv_req = BeautifulSoup(csv_req, 'html.parser')
+# 	# Find all span tags where class is 'download'
+# 	print(csv_req.findAll('div', {'class':'attachment-details'}))
