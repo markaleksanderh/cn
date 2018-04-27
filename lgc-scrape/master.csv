@@ -1,0 +1,16 @@
+file, title_column, column_1, column_2, column_3, column_4
+retrieved_csv\test1.csv,headcount,-1018,228,856,228
+retrieved_csv\test1.csv,file,0,515,228,515
+retrieved_csv\test1.csv,technology,2389,-251,515,-251
+retrieved_csv\test1.csv,housing,725,2389,-251,1274
+retrieved_csv\test1.csv,stuff,1274,856,1712,1712
+retrieved_csv\test2.csv,documents,1367,228,1878,228
+retrieved_csv\test2.csv,departmental,1878,515,103,515
+retrieved_csv\test2.csv,staff,-63,-251,-42,725
+retrieved_csv\test2.csv,costs,275,-1018,-2035,1274
+retrieved_csv\test2.csv,reports,-1018,-1018,-1018,-42
+retrieved_csv\test3.csv,headcount,228,1878,856,725
+retrieved_csv\test3.csv,file,2900,1274,856,1274
+retrieved_csv\test3.csv,technology,856,-1018,228,-1018
+retrieved_csv\test3.csv,housing,856,0,515,0
+retrieved_csv\test3.csv,stuff,725,2389,-251,103
