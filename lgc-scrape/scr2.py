@@ -1,9 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
-# Store scraped URLs in array
-next_page_urls = []
-
+"""
 # Request content of following URL as string
 gov_req = requests.get('https://www.gov.uk/government/collections/workforce-management').content
 
@@ -16,16 +13,26 @@ gov_soup = BeautifulSoup(gov_req, 'html.parser')
 h3_soup = gov_soup.findAll('h3', {'class': 'gem-c-document-list__item-title'})
 
 # Now loop through array of h3 elements
-for a in h3_soup:
-	next_page_urls.append(a.find('a').get('href'))
+# for a in h3_soup:
+# 	next_page_urls.append(a.find('a').get('href'))
 
 # href attribute of anchor tags is relative so to get the scraper to work,
 # be sure to provide the rest of the url
 base_url = 'https://www.gov.uk/'
 
 
+
+# Store scraped URLs in array
+with open('urls.txt', 'wt') as outfile:
+	for a in h3_soup:
+		outfile.write('{}{}\n'.format(base_url, a.find('a').get('href')))
+
 # for url in next_page_urls:
 # 	print('{}{}'.format(base_url, next_page_urls))
+"""
 
+# print('{}{}'.format(base_url, next_page_urls[0]))
 
-print('{}{}'.format(base_url, next_page_urls[0]))
+# Test with first link
+# csv_req = requests.get('{}{}'.format(base_url, next_page_urls[0])).content
+# print(csv_req)
