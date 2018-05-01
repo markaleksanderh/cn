@@ -43,6 +43,12 @@ class AddJob(generic.CreateView):
     # def get_queryset(self):
     #     return CustomUser.objects.filter(user=self.request.user)
 
+class UpdateJob(generic.UpdateView):
+    model = Job
+    fields = ['description']
+    template_name_suffix = '_update_form'
+
+
 class ViewJobs(generic.ListView):
     template_name = 'view_jobs.html'
     # login_url = 'login'

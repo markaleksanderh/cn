@@ -22,5 +22,6 @@ urlpatterns = [
     path('add_job/', views.AddJob.as_view(), name='add_job'),
     path('view_jobs/', views.ViewJobs.as_view(), name='view_jobs'),
     # path('', views.Dashboard.as_view(), name='dashboard'),
-    path('job/<int:pk>', views.JobDetail.as_view(), name='job_detail')
+    path('job/<int:pk>', views.JobDetail.as_view(), name='job_detail'),
+    # path('job/<int:pk>', views.UpdateJob.as_view(), name='update_job'),
 ]
