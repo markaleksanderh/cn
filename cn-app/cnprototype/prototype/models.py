@@ -5,7 +5,6 @@ from django.urls import reverse
 
 from django.forms import ModelForm
 
-
 class CustomUser(AbstractUser):
     name = models.CharField(blank=True, max_length=255)
     first_name = models.CharField(max_length=100, blank=True)
@@ -24,11 +23,15 @@ class Job(models.Model):
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.name
-
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])
-        # return 'job_detail/{}/'.format(self.id)
-        # return reverse('job_detail', kwargs={'id': self.id})
+
+class JobQuote(models.Model):
+    value = models.IntegerField(null=True, blank=True)
+    quote_added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
+
+
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")

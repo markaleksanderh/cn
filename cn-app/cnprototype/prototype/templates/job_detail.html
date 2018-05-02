@@ -31,7 +31,7 @@
       <p><strong>Views: </strong>BLANK</p>
       <p><strong>Quotes: </strong>BLANK</p>
       {% if job.added_by.id == user.id %}
-      <a href="update_job" class="btn btn-primary">Edit job</a>
+      <a href="{% url 'update_job' %}" class="btn btn-primary">Edit job</a>
       <a href="#">Delete job</a>
       {% else %}
 
