@@ -24,7 +24,7 @@ class AddJob(LoginRequiredMixin, generic.CreateView):
     # login_url = 'accounts/login/'
     # redirect_field_name = 'redirect_to'
     form_class = AddJobForm
-    success_url = reverse_lazy('view_jobs')
+    success_url = reverse_lazy('index')
     template_name = 'add_job.html'
     def form_valid(self, form):
         form.instance.added_by = self.request.user
