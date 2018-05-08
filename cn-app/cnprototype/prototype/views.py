@@ -1,13 +1,13 @@
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from .models import Job
+from .models import Job, Quote
 
 from django.shortcuts import render
 
 from django.http import HttpResponse
 
 from .forms import CustomUserCreationForm
-from .forms import AddJobForm
+from .forms import AddJobForm, AddQuoteForm
 from django.conf import settings
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -32,11 +32,27 @@ class AddJob(LoginRequiredMixin, generic.CreateView):
     # def get_queryset(self):
     #     return CustomUser.objects.filter(user=self.request.user)
 
+class AddQuote(LoginRequiredMixin, generic.CreateView):
+    login_url = '/prototype/login/'
+    form_class = AddQuoteForm
+    success_url = reverse_lazy('index')
+    template_name = 'add_quote.html'
+    def form_valid(self, form, *args, **kwargs):
+        form.instance.quote_added_by = self.request.user
+        form.instance.job = kwargs.get("job_id")
+
+        return super(AddQuote, self).form_valid(form)
+
 class UpdateJob(LoginRequiredMixin, generic.UpdateView):
     model = Job
     fields = ['description']
     template_name_suffix = '_update_form'
 
+
+class QuoteDetail(LoginRequiredMixin, generic.TemplateView):
+    login_url = '/prototype/login/'
+    model = Quote
+    template_name = 'quote_detail.html'
 
 class ViewJobs(LoginRequiredMixin, generic.ListView):
     login_url = '/prototype/login/'
@@ -55,7 +71,8 @@ class Dashboard(generic.DetailView):
     def get(self, request, *args, **kwargs):
         user = self.request.user
         job_list = Job.objects.filter(added_by__exact=user.id)
-        return render(request, self.template_name, {'job_list': job_list}, {'user': user})
+        quotes = Quote.objects.filter(quote_added_by__exact=user.id)
+        return render(request, self.template_name, {'job_list': job_list, 'user': user, 'quotes': quotes})
 
 
 class JobDetail(LoginRequiredMixin, generic.DetailView):

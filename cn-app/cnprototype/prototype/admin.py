@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
-from .models import Job, Company, Region
+from .models import Job, Company, Region, Quote
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
+
 
 
 class CustomUserAdmin(UserAdmin):
@@ -19,3 +20,4 @@ admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Job)
 admin.site.register(Company)
 admin.site.register(Region)
+admin.site.register(Quote)

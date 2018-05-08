@@ -19,10 +19,19 @@
       <p><strong>Added: </strong>{{job.added}}</p>
     </div>
     <div class="col-4">
-      <h5>Contractor details:</h5>
-      <p><strong>Company: </strong>{{job.company}}</p>
-      <p><strong>User:</strong> {{job.added_by}}</p>
-      <p><strong>Rating: </strong>BLANK</p>
+      {% if job.added_by.id == user.id %}
+        <h5>Quotes:</h5>
+        {% for quote in job.quotes.all %}
+          <p>{{quote.value}}, {{quote.added_by}}</p>
+        {% empty %}
+          <p>No quotes yet.</p>
+        {% endfor %}
+      {% else %}
+        <h5>Contractor details:</h5>
+        <p><strong>Company: </strong>{{job.company}}</p>
+        <p><strong>User:</strong> {{job.added_by}}</p>
+        <p><strong>Rating: </strong>BLANK</p>
+      {% endif %}
     </div>
   </div>
   <div class="row">
@@ -31,11 +40,11 @@
       <p><strong>Views: </strong>BLANK</p>
       <p><strong>Quotes: </strong>BLANK</p>
       {% if job.added_by.id == user.id %}
-      <a href="{% url 'update_job' %}" class="btn btn-primary">Edit job</a>
+      <a href="#" class="btn btn-primary">Edit job</a>
       <a href="#">Delete job</a>
       {% else %}
-
-      <button type="button" class="btn btn-primary">Submit quote</button>
+      <a href="{% url 'add_quote' pk=job.pk %}">Submit quote</a>
+      <!-- <button type="button" class="btn btn-primary">Submit quote</button> -->
       {% endif %}
   </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
-from .models import Job
+from .models import Job, Quote
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -17,3 +17,8 @@ class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['name', 'description', 'value', 'region']
+
+class AddQuoteForm(forms.ModelForm):
+    class Meta:
+        model = Quote
+        fields = ['value']

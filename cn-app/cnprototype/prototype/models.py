@@ -26,10 +26,15 @@ class Job(models.Model):
     def get_absolute_url(self):
         return reverse('job_detail', args=[str(self.id)])
 
-class JobQuote(models.Model):
+class Quote(models.Model):
+    job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
     value = models.IntegerField(null=True, blank=True)
     quote_added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
+    # quote_added = models.DateTimeField(default = timezone.now)
+    # def __str__(self):
+    #     return self.job
+    def get_absolute_url(self):
+        return reverse('quote_detail', args=[str(self.id)])
 
 
 
