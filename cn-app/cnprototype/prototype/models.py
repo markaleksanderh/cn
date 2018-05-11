@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 from django.forms import ModelForm
 
@@ -28,9 +29,11 @@ class Job(models.Model):
 
 class Quote(models.Model):
     job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
+    job_name = models.CharField(max_length=200, null=True)
     value = models.IntegerField(null=True, blank=True)
     quote_added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    # quote_added = models.DateTimeField(default = timezone.now)
+    added = models.DateTimeField(auto_now_add=True)
+    closing_date = models.DateTimeField("Enter ending date:")
     # def __str__(self):
     #     return self.job
     def get_absolute_url(self):

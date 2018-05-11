@@ -21,4 +21,4 @@ class AddJobForm(forms.ModelForm):
 class AddQuoteForm(forms.ModelForm):
     class Meta:
         model = Quote
-        fields = ['value']
+        fields = ['value', 'closing_date']

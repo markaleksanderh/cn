@@ -3,29 +3,156 @@ Abel, 400
 Ubuntu, 300, 300i, 400, 400i, 500, 500i, 700, 700i
 **/
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,500,600,700|Rubik:300,400,500,700');
 
 /* body {
   background-color: rgb(249,249,251);
 } */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto';
+  font-family: 'Rubik';
 }
 
-p, ul, li {
-  font-family: 'Roboto';
+p, a, ul, li {
+  font-family: 'Libre Franklin';
 }
 
-/* .header-shadow {
-  background-color: #263238;
-  -webkit-box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.15);
-  -moz-box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.15);
-  box-shadow: 0px 10px 5px 0px rgba(176,190,197,0.15);
-} */
+
+
+.navbar {
+    background-color: rgb(255,255,255);
+    border-color: #E7E7E7;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+  margin-left: 12px;
+  margin-right: 12px;
+  color: rgb(150,150,150);
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+body {
+  background-color: rgb(245,246,249);
+}
+
+h1.page-title {
+  color: rgb(185,186,189);
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.db-counter {
+  font-weight: 700;
+  color: rgb(100,100,255);
+}
+
+h2.head-logo {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 14px;
+  margin-right: 8px;
+}
+
+h3.panel-title {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 10px 0px;
+}
+
+div.dashboard-panel-light {
+  background-color: rgb(255,255,255);
+  padding: 20px;
+}
+
+div.dashboard-panel-rows {
+  background-color: rgb(255,255,255);
+}
 
 
 
-/**
-Contract leads/job list
-**/
+.panel-row {
+  padding: 15px 15px;
+  border-bottom: solid 2px rgb(240,240,240);
+  transition: background-color .25s;
+}
+
+.panel-row:hover {
+  background-color: rgb(100,100,120);
+  color: rgb(255,255,255);
+}
+
+.navbar-toggler {
+  color: rgb(0,0,0);
+}
+
+.job-list-panel {
+  background-color: rgb(255,255,255);
+}
+
+.view-job {
+  /* border-left: solid 2px rgb(240,240,240); */
+  position: relative;
+  background-color: rgb(235,235,240);
+
+}
+
+.save-job {
+  background-color: rgb(240,240,245);
+  /* border-left: solid 2px rgb(240,240,240); */
+  position: relative;
+  transition: background-color .25s;
+}
+
+.view-job:hover, .save-job:hover {
+  background-color: rgb(100,100,120);
+  color: rgb(255,255,255);
+  transition: background-color .25s;
+}
+
+.view-job:hover a, .save-job:hover a {
+  /* text-decoration: none */
+  color: rgb(255,255,255);
+
+}
+
+.job-detail-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  color: rgb(0,0,0);
+}
+
+.job-detail-icon:hover {
+  /* color: rgb(255,255,255); */
+}
+
+
+
+.job-list-panel-details {
+  padding: 20px;
+}
+
+.job-list-panel-added-by {
+  font-size: 14px;
+}
+
+.job-detail-panel {
+  background-color: rgb(255,255,255);
+  padding: 20px;
+}
+
+.job-title-region {
+  font-weight: 300;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 10px 0px 0px 0px;
+}

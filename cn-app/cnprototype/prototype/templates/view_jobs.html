@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col">
-    <h1>Contract Leads</h1>
+    <h1 class="page-title">View jobs</h1>
   </div>
 </div>
 <div class="row">
@@ -15,27 +15,27 @@
 
     <h3>Contract list</h3>
     {% if job_list %}
-      <p>Number of jobs: {{job_list|length}}</p>
+      <h3 class="panel-title">Number of jobs found: <span class="db-counter">({{job_list|length}})</span></h3>
       {% for j in job_list %}
-
-          <div class="card">
-            <div class="card-header">
-              <strong>Posted by: </strong>{{j.added_by}}
+        <div class="job-list-panel">
+          <div class="row" style="height: 100%;">
+            <div class="col-sm-8">
+              <div class="job-list-panel-details">
+                <h4 class="job-title">{{j.name}}, <span class="job-title-region">{{j.region}}</span></h4>
+                <p>{{j.description}}</p>
+                <p class="job-list-panel-added-by">Added by {{j.added_by}} at {{j.added}}</p>
+              </div>
             </div>
-            <div class="card-body">
-              <h4 class="card-title">{{j.name}}</h4>
-              <p class="card-text">{{j.description}}</p>
-              <p class="card-text"><strong>Region: </strong>{{j.region}}</p>
-              <p class="card-text"><strong>Value: </strong>{{j.value}}</p>
-              <a href="{{j.get_absolute_url}}" class="btn btn-primary">View job</a>
-              <a href="#" class="btn btn-light">Save</a>
-
+            <div class="col-sm view-job">
+              <a href="{{j.get_absolute_url}}" class="job-detail-icon">View</a>
             </div>
-            <div class="card-footer text-muted">
-              <strong>Added:</strong> {{j.added}}
+            <div class="col-sm save-job">
+              <a href="#" class="job-detail-icon">Save</a>
             </div>
           </div>
-          </br>
+
+        </div>
+
       {% endfor %}
 
     {% else %}

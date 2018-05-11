@@ -3,16 +3,25 @@
 {% block content %}
 <div class="row">
   <div class="col">
-    <h1>Add job</h1>
+    <h1 class="page-title">Add job</h1>
   </div>
 </div>
 <div class="row">
   <div class="col">
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p}}
-      <button type="submit">Submit job</button>
-    </form>
+    <div class="dashboard-panel-light">
+      <form method="post">
+        {% csrf_token %}
+        <p class="form-label">Name</p>
+        {{ form.name }}
+        <p class="form-label">Description</p>
+        {{ form.description }}
+        <p class="form-label">Region</p>
+        {{ form.region }}
+        <p class="form-label">Value</p>
+        {{ form.region }}
+        <button type="submit">Submit job</button>
+      </form>
+    </div>
   </div>
 </div>
 

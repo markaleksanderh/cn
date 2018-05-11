@@ -4,60 +4,62 @@
 {% if user.is_authenticated %}
 <div class="row">
   <div class="col">
-    <h1>Index</h1>
-    <h5><strong>Hello,</strong> {{user.username}}.</h5>
+    <h1 class="page-title">Dashboard</h1>
   </div>
 </div>
 <div class="row">
 
   <div class="col-4">
-    <div class="card">
-      <div class="card-body">
-        <div class="card-title">
-          <strong>Name: </strong>{{user.first_name}} {{user.second_name}</p>
-        </div>
-        <p class="card-text"><strong>Company: </strong>{{user.company}}</p>
-        <p class="card-text"><strong>User ID: </strong>{{user.id}}</p>
-      </div>
+    <h3 class="panel-title">Profile</h3>
+    <div class="dashboard-panel-light">
+
+
+      <p>{{user.first_name}} {{user.second_name}}</p>
+
+      <p>{{user.company}}</p>
+
+      <p><strong>Joined:</strong> {{user.date_joined}}</p>
+      <p><strong>Last login:</strong> {{user.last_login}}</p>
+      <p><strong>ID:</strong> {{user.id}}</p>
+
     </div>
   </div>
-
   <div class="col-4">
-    <div class="card">
-      <div class="card-header">
-        My added jobs ({{job_list|length}})
-      </div>
+    <h3 class="panel-title">My added jobs <span class="db-counter">({{job_list|length}})</span></h3>
+    <div class="dashboard-panel-rows">
       {% if job_list %}
-        <ul class="list-group list-group-flush">
-          {% for j in job_list %}
-            <li class="list-group-item"><a href="{{ j.get_absolute_url }}">{{j.name}}</a></li>
-          {% endfor %}
-        </ul>
+        {% for j in job_list %}
+          <a href="{{ j.get_absolute_url }}">
+            <div class="panel-row">
+              {{j.name}}
+            </div>
+          </a>
+        {% endfor %}
       {% else %}
-        <div class="card-body">
-          <div class="card-title">
-            No jobs added yet.
-          </div>
+        <div class="empty-list">
+          <p>You have not added any jobs yet. Click <a href="{% url 'add_job' %}">add job</a> to add a new job.</p>
         </div>
       {% endif %}
     </div>
   </div>
-
   <div class="col-4">
-    <div class="card">
-      <div class="card-header">
-        My saved jobs
-        {{quotes}}
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
+    <h3 class="panel-title">My submitted quotes <span class="db-counter">({{quotes|length}})</span></h3>
+    <div class="dashboard-panel-rows">
+      {% if quotes %}
+        {% for q in quotes %}
+          <div class="panel-row">
+            {{q.job_id}}, {{q.value}}, {{q.job_name}}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-list">
+          <p>You have not added any quotes yet. To add a quote, view a job and click submit quote.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
-
 </div>
+
 
 
 {% else %}
