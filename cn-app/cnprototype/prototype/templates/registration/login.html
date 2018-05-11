@@ -6,12 +6,20 @@
     {% block title %}Login{% endblock %}
 
     {% block content %}
-    <h2>Login</h2>
+    <h1 class="page-title">Login</h1>
+    <div class="col-sm-5">
+      <div class="dashboard-panel-light">
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      <p class="form-label">Username</p>
+      {{ form.username }}
+      <p class="form-label">Password</p>
+      {{ form.password }}
+      <br>
       <button type="submit">Login</button>
     </form>
+  </div>
+  </div>
     {% endblock %}
   </div>
 </div>
