@@ -22,7 +22,7 @@
             <div class="col-sm-8">
               <div class="job-list-panel-details">
                 <h4 class="job-title">{{j.name}}, <span class="job-title-region">{{j.region}}</span></h4>
-                <p>{{j.description}}</p>
+                <p>{{j.description|truncatechars:100}} <a href="{{j.get_absolute_url}}">(read more).</a></p>
                 <p class="job-list-panel-added-by">Added by {{j.added_by}} at {{j.added}}</p>
               </div>
             </div>
