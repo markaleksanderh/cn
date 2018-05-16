@@ -22,6 +22,7 @@ class Job(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
+    closing_date = models.DateTimeField("Enter ending date:")
     def __str__(self):
         return self.name
     def get_absolute_url(self):
@@ -33,11 +34,14 @@ class Quote(models.Model):
     value = models.IntegerField(null=True, blank=True)
     quote_added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     added = models.DateTimeField(auto_now_add=True)
-    closing_date = models.DateTimeField("Enter ending date:")
     # def __str__(self):
     #     return self.job
     def get_absolute_url(self):
         return reverse('quote_detail', args=[str(self.id)])
+
+# class Trade(models.model):
+#     # job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
+#     name = models.CharField(max_length=100, null=True, blank=True)
 
 
 

@@ -48,7 +48,9 @@
       {% if quotes %}
         {% for q in quotes %}
           <div class="panel-row">
-            {{q.job_id}}, {{q.value}}, {{q.job_name}}
+            <p><a href="#">{{q.job_name}}</a></p>
+            <p>£{{q.value}}</p>
+            <p>Contractor: <a href="#">{{q.quote_added_by}}</a></p>
           </div>
         {% endfor %}
       {% else %}

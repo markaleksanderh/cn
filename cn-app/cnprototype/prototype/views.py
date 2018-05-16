@@ -13,6 +13,14 @@ from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+
+from .filters import JobFilter
+
+
+
+
+
+
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
@@ -39,10 +47,10 @@ class AddQuote(LoginRequiredMixin, generic.CreateView):
     template_name = 'add_quote.html'
     def form_valid(self, form, *args, **kwargs):
         form.instance.quote_added_by = self.request.user
-        job_id = int(Job.objects.get(pk=self.kwargs.get('pk')))
-        form.instance.job = job_id
-        job_name = Job.objects.filter(id__exact = job_id).values('name')[0]['name']
-        form.instance.job_name = 'job_name'
+        form.instance.job = Job.objects.get(pk=self.kwargs.get('pk'))
+        # form.instance.job = job_id
+        form.instance.job_name = Job.objects.get(pk=self.kwargs.get('pk'))
+        # form.instance.job_name = job_name
         # form.instance.job_name = Job.objects.filter(id = job_id).values('name', flat=True)
         return super(AddQuote, self).form_valid(form)
 

@@ -16,9 +16,9 @@ class CustomUserChangeForm(UserChangeForm):
 class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['name', 'description', 'value', 'region']
+        fields = ['name', 'description', 'value', 'region', 'closing_date']
 
 class AddQuoteForm(forms.ModelForm):
     class Meta:
         model = Quote
-        fields = ['value', 'closing_date']
+        fields = ['value']
