@@ -1,40 +1,42 @@
 
 
 {% block header %}
-<nav class="navbar sticky-top navbar-expand-lg header-shadow">
-  <!-- <a class="navbar-brand" href="#"> -->
-    <!-- <img src="https://www.constructionnews.co.uk/magazine/graphics/svg/logo.svg" height="60" alt=""> -->
-    <h2 class="head-logo">Invitation to<br>Tender App</h2>
-  <!-- </a> -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'index' %}">Home</a>
-      </li>
-      {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'view_jobs' %}">View jobs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'add_job' %}">Add job</a>
-      </li>
+<header>
+  <nav class="navbar sticky-top navbar-expand-lg header-shadow">
+    <!-- <a class="navbar-brand" href="#"> -->
+      <!-- <img src="https://www.constructionnews.co.uk/magazine/graphics/svg/logo.svg" height="60" alt=""> -->
+      <h2 class="head-logo">Invitation to<br>Tender App</h2>
+    <!-- </a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'view_jobs' %}">View jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_job' %}">Add job</a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'signup' %}">Sign-up</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Sign-up</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</header>
 
 {% endblock %}
