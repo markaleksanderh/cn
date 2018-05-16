@@ -40,6 +40,11 @@ body {
   background-color: rgb(245,246,249);
 }
 
+.inner-panel-padding {
+  padding: 20px;
+}
+
+
 h1.page-title {
   color: rgb(185,186,189);
   font-weight: 300;

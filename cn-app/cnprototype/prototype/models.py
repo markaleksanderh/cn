@@ -14,6 +14,11 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+class Trade(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    def __str__(self):
+        return self.name
+
 class Job(models.Model):
     name = models.CharField(max_length=200, help_text="Enter a job name")
     description = models.TextField(max_length=750, help_text="Enter job description", null=True, blank=True)
@@ -23,6 +28,7 @@ class Job(models.Model):
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     closing_date = models.DateTimeField("Enter ending date:")
+    trade = models.ManyToManyField(Trade)
     def __str__(self):
         return self.name
     def get_absolute_url(self):
@@ -38,12 +44,6 @@ class Quote(models.Model):
     #     return self.job
     def get_absolute_url(self):
         return reverse('quote_detail', args=[str(self.id)])
-
-# class Trade(models.model):
-#     # job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True)
-#     name = models.CharField(max_length=100, null=True, blank=True)
-
-
 
 class Company(models.Model):
     name = models.CharField(max_length=100, help_text="Enter company name")

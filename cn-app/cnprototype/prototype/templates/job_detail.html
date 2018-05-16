@@ -14,28 +14,35 @@
     <div class="col-sm-6">
       <h3 class="panel-title">Job details</h3>
       <div class="job-detail-panel">
-        <p><strong>Description: </strong>{{job.description}}</p>
-        <p><strong>Value: </strong>{{job.value}}</p>
-        <p><strong>Region: </strong>{{job.region}}</p>
-        <p><strong>Added: </strong>{{job.added}}</p>
+        <div class="inner-panel-padding">
+          <p><strong>Description: </strong>{{job.description}}</p>
+          <p><strong>Value: </strong>{{job.value}}</p>
+          <p><strong>Region: </strong>{{job.region}}</p>
+          <p><strong>Added: </strong>{{job.added}}</p>
+          <p><strong>Trades: </strong>{{job.trade}}</p>
+        </div>
       </div>
     </div>
     <div class="col-sm">
       {% if job.added_by.id == user.id %}
         <h3 class="panel-title">Quotes</h3>
         <div class="job-detail-panel">
-          {% for quote in job.quotes.all %}
-            <p>{{quote.value}}, {{quote.added_by}}</p>
-          {% empty %}
-            <p>No quotes yet.</p>
-          {% endfor %}
+          <div class="inner-panel-padding">
+            {% for quote in job.quotes.all %}
+              <p>{{quote.value}}, {{quote.added_by}}</p>
+            {% empty %}
+              <p>No quotes yet.</p>
+            {% endfor %}
+          </div>
         </div>
       {% else %}
       <h3 class="panel-title">Contractor</h3>
         <div class="job-detail-panel">
-          <p><strong>Company: </strong>{{job.company}}</p>
-          <p><strong>User:</strong> {{job.added_by}}</p>
-          <p><strong>Rating: </strong>BLANK</p>
+          <div class="inner-panel-padding">
+            <p><strong>Company: </strong>{{job.company}}</p>
+            <p><strong>User:</strong> {{job.added_by}}</p>
+            <p><strong>Rating: </strong>BLANK</p>
+          </div>
         </div>
       {% endif %}
     </div>
@@ -44,15 +51,17 @@
     <div class="col-sm-4">
       <h3 class="panel-title">Stats</h3>
       <div class="job-detail-panel">
-        <p><strong>Views: </strong>BLANK</p>
-        <p><strong>Quotes: </strong>BLANK</p>
-        {% if job.added_by.id == user.id %}
-        <a href="#" class="btn btn-primary">Edit job</a>
-        <a href="#">Delete job</a>
-        {% else %}
-        <a href="{% url 'add_quote' pk=job.pk %}">Submit quote</a>
-        <!-- <button type="button" class="btn btn-primary">Submit quote</button> -->
-        {% endif %}
+        <div class="inner-panel-padding">
+          <p><strong>Views: </strong>BLANK</p>
+          <p><strong>Quotes: </strong>BLANK</p>
+          {% if job.added_by.id == user.id %}
+          <a href="#" class="btn btn-primary">Edit job</a>
+          <a href="#">Delete job</a>
+          {% else %}
+          <a href="{% url 'add_quote' pk=job.pk %}">Submit quote</a>
+          <!-- <button type="button" class="btn btn-primary">Submit quote</button> -->
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
